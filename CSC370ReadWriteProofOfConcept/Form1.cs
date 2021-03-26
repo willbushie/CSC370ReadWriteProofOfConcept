@@ -9,7 +9,7 @@
  *      William Bushie - Programmer
  *      
  * start of development:        3/24/2021
- * completion of development:   NOT YET COMPLETED
+ * completion of development:   3/26/2021
  * 
  */
 
@@ -38,6 +38,8 @@ namespace CSC370ReadWriteProofOfConcept
         {
             this.contentsTextBox.Text = "";
             this.textFileTextBox.Text = "";
+            this.contentsTextBox2.Text = "";
+            this.writeSaveAsTextBox.Text = "";
         }
 
 
@@ -96,38 +98,27 @@ namespace CSC370ReadWriteProofOfConcept
         // this method successfully creates a new file with the hardcoded information in the documents folder
         private void writeButton_Click(object sender, EventArgs e)
         {
-            // create a string array with the lines of text
-            string[] lines = {"first line", "second line", "third line"};
+            // read in the lines from the contents box
+            string writeToFileContents = contentsTextBox2.Text;
 
             // set a variable to the documents path
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            // write the string array to a new file named "WriteLines.txt"
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt")))
+            // write the input onto the new file that will be created
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, (writeSaveAsTextBox.Text + ".txt"))))
             {
-                foreach (string line in lines)
-                {
-                    outputFile.WriteLine(line);
-                }
+                outputFile.WriteLine(writeToFileContents);
             }
-
-            // all of this code is from a previous application, leaving it in this format to 
-            // help in the future when implementing the writeToFile method
-            /*string fileName = DateTime.Now.ToString("MMddyyyy_HHmmss") + "_ShimTotals.txt";
-            string documentPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(documentPath, fileName)))
-            {
-                // write the header for the file
-                outputFile.WriteLine(DateTime.Now.ToString("MM/dd/yyyy | HH:mm:ss"));
-                outputFile.WriteLine("TotalShims: " + " | Total Weight: ");
-            }
-            */
         }
 
-        // this is the button event for saving as
-        // 
+        // this is the button event for save as
+        // this allows the user to chose a file location for the text document to be saved
+        // as well as correctly write the contents entered by the user to the file
         private void saveAsButton_Click(object sender, EventArgs e)
         {
+            // read in the lines from the contents box
+            string writeToFileContents = contentsTextBox2.Text;
+
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -139,9 +130,12 @@ namespace CSC370ReadWriteProofOfConcept
             {
                 if((myStream = saveFileDialog1.OpenFile()) != null)
                 {
-                    // code to write the stream goes here
+                    // write the input onto the new file that will be created
+                    using (StreamWriter outputFile = new StreamWriter(myStream))
+                    {
+                        outputFile.WriteLine(writeToFileContents);
+                    }
                     myStream.Close();
-                    MessageBox.Show("this is a test");
                 }
             }
         }

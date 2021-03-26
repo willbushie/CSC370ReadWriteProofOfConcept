@@ -40,6 +40,8 @@ namespace CSC370ReadWriteProofOfConcept
             this.saveAsButton = new System.Windows.Forms.Button();
             this.contentsTextBox2 = new System.Windows.Forms.TextBox();
             this.contentsLabel2 = new System.Windows.Forms.Label();
+            this.writeSaveAsTextBox = new System.Windows.Forms.TextBox();
+            this.writeTextBoxLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textFileLabel
@@ -97,7 +99,7 @@ namespace CSC370ReadWriteProofOfConcept
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(138, 378);
+            this.clearButton.Location = new System.Drawing.Point(320, 386);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 6;
@@ -142,11 +144,29 @@ namespace CSC370ReadWriteProofOfConcept
             this.contentsLabel2.TabIndex = 10;
             this.contentsLabel2.Text = "Contents:";
             // 
+            // writeSaveAsTextBox
+            // 
+            this.writeSaveAsTextBox.Location = new System.Drawing.Point(410, 8);
+            this.writeSaveAsTextBox.Name = "writeSaveAsTextBox";
+            this.writeSaveAsTextBox.Size = new System.Drawing.Size(209, 20);
+            this.writeSaveAsTextBox.TabIndex = 11;
+            // 
+            // writeTextBoxLabel
+            // 
+            this.writeTextBoxLabel.AutoSize = true;
+            this.writeTextBoxLabel.Location = new System.Drawing.Point(348, 8);
+            this.writeTextBoxLabel.Name = "writeTextBoxLabel";
+            this.writeTextBoxLabel.Size = new System.Drawing.Size(47, 13);
+            this.writeTextBoxLabel.TabIndex = 12;
+            this.writeTextBoxLabel.Text = "Text File";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 450);
+            this.Controls.Add(this.writeTextBoxLabel);
+            this.Controls.Add(this.writeSaveAsTextBox);
             this.Controls.Add(this.contentsLabel2);
             this.Controls.Add(this.contentsTextBox2);
             this.Controls.Add(this.saveAsButton);
@@ -178,6 +198,8 @@ namespace CSC370ReadWriteProofOfConcept
         private System.Windows.Forms.Button saveAsButton;
         private System.Windows.Forms.TextBox contentsTextBox2;
         private System.Windows.Forms.Label contentsLabel2;
+        private System.Windows.Forms.TextBox writeSaveAsTextBox;
+        private System.Windows.Forms.Label writeTextBoxLabel;
     }
 }
 
